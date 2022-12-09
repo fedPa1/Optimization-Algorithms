@@ -3,7 +3,7 @@
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
 #using the conjugated Gradient method
 
-#link to the article https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
+#material used to implement the script: https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
 
 import numpy
 import math
