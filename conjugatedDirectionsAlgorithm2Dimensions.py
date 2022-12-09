@@ -7,6 +7,8 @@
 #(1)Accelarate the convergence rate of steepest decent.
 #(2)Avoiding the high computational cost Newton’s method
 
+#link to the article https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
+
 #Notation:
 #^t indicates the transposed operator in arrays
 #* indicates multiplication sign except in x* indicating a point in R^2
