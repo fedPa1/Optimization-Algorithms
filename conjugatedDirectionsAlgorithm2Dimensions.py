@@ -7,7 +7,7 @@
 #(1)Accelarate the convergence rate of steepest decent.
 #(2)Avoiding the high computational cost Newton’s method
 
-#link to the article https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
+#material used to implement the script: https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
 
 import numpy
 import math
