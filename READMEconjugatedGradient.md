@@ -5,10 +5,11 @@ Implementation of linear optimization algorithms in python
 #and we can use  Fletcher-Reeves formula to calculate bk+1= norm(gk+1)/norm(gk)
 
 #the conjugated gradient method differs from the conjugated directions in the choiche of d0 , and dk+1
-# to calculate dk+1 we'll have to introduce a new variable bk+1=gk+1^t*Q*dk/dk^t*Q*dk , gk is the gradient
+#to calculate dk+1 we'll have to introduce a new variable bk+1=gk+1^tQdk/dk^t*Q*dk , gk is the gradient
 #calculate at xk, the next direction dk+1 is a perturbation of the antigradient in xk+1 obtained in the following way
-# dk+1=-gk+1+bk+1*dk
+#dk+1=-gk+1+bk+1*dk
 
+#material used to implement the script: https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
 
 #Notation:
 #^t indicates the transposed operator in arrays
