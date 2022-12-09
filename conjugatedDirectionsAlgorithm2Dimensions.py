@@ -3,6 +3,7 @@
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
 #using the conjugated directions method
 
+#References: https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
 
 #Notation:
 #^t indicates the transposed operator in arrays
