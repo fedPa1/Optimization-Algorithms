@@ -19,7 +19,7 @@ import numdifftools as nd
 x=[random.random()*1000,random.random()*1000]
 
 #function (f0 function,g0 gradient,h0 hessian matrix) f0 must match 1/2*x^tQx+c^tx form
-#we can input any function as long it matches the required form with Q determinant defined positive
+#we can input any function as long it matches the required form with Q nxn with determinant defined positive
 
 f0=5*x[0]**2-2*x[0]+5*x[1]+3*x[1]**2-2*x[0]*x[1] 
 g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
