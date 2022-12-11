@@ -70,6 +70,8 @@ while (k<=10**4):
     d0Q=numpy.dot(d0,Q) #matrix multiplication between d0^t and Q
     print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x,"direction",calculateDirectionMethodD1(d0Q))
     if (numpy.linalg.norm(g0)==0): #algorithm found the only critical point and must be global in the strictly convex function
+                                   #you might want to set an arbitraty tolerance eps>0 s.t. norm(g0)<=eps since there can be cases where
+                                   # norm(g0) will never converge to 0
         print("global minimum at",x,"after",k,"iterations")
         break
     alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculate alfak step to take from point xk
