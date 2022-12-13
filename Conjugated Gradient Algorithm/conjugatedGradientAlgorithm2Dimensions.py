@@ -1,3 +1,4 @@
+#Contact: fedpa35@gmail.com
 
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
 #using the conjugated Gradient method
