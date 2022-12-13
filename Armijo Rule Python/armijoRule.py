@@ -1,6 +1,3 @@
-# @Author: Federico Pantini 
-
-# email:fedpa35@gmail.com
 
 # The script computes an alpha step that minimizes the given 2 variables function using the
 # armijo's rule
