@@ -2,7 +2,7 @@
 Implementation of linear optimization algorithms in python
 
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
-#using the conjugated directions method
+#using  a variaton of conjugated directions method
 
 #Why use conjugated directions method?
 #(1)Accelarate the convergence rate of steepest decent.
