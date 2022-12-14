@@ -2,7 +2,9 @@
 # Contact: fedpa35@gmail.com
 
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
-#using a variation of conjugated directions method 
+#using a variation created by me of conjugated directions method, the algorithm seems to be working , however it's not broadly tested
+#or demonstrated and it was purely done for fun, the main difference is that we can calculate a direction d1 given as initial direction the antigradient
+#iteratively avoiding to initially set a Basis in R^n of Q-conjugated directions.
 
 #References: https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
 
@@ -77,7 +79,8 @@ while (k<=10**4):
         break
     alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculate alfak step to take from point xk
     x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]]
-    d0=calculateDirectionMethodD1(d0Q) #calculate d1 based on d0
+    d0=calculateDirectionMethodD1(d0Q) #calculate d1 based on d0 , difference between this variation and original method is that we can calculate the directions 
+                                        #iteratively instead of giving a set of n Q-conjugated directions B before the algorithm start
     k+=1
 
 
