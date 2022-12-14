@@ -28,7 +28,7 @@ class armijoClass:
         x=self.x
         d=self.d
         g0=self.g0
-        if(numpy.dot(g0,d)>=numpy.dot(g0,x)):
+        if(numpy.dot(g0,d)>=0):
             print("initial direction not descent, please choose a valid direction")
             return
         alfa=1 #alfa0 step >0
