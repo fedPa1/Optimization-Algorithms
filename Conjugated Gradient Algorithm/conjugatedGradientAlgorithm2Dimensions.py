@@ -28,11 +28,10 @@ g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
 #h0=[[10,-2],[-2,6]]
 
 #we will need to express the function in a quadratic form 1/2*x^tQx+c^tx
-#so we declare 2 arrays composed by c (2x1) and Q coefficients (2x2) , Q corresponds to Hessian matrix in the quadratic form
+#so we declare 2 arrays composed by c (2x1) and Q coefficients (2x2)
 
 c=[-2,5]
 Q=[[10,-2],[-2,6]]
-
 
 #d0 taken using the antigradient
 
@@ -42,40 +41,15 @@ d0=[-g0[0],-g0[1]]
 #since Q determinant is defined positive in the quadratic form (function is strictly convex)
 
 
-#1) calculate dk+1 direction given dk and Q (already multiplied)
-
-def calculateDirectionMethodD1(d0Q):
-    d1=[0,0]
-    # case 0=0 we can choose components of d1 arbitrary , we choose d1=(1,1) in this case
-    if(d0Q[0]==0 and d0Q[1]==0):
-        d1=[1,1]
-
-    # case d0Q[0]=0 we can choose x arbitrary (1 in this case) and  y=0
-    elif(d0Q[0]==0):
-        d1=[1,0]
-
-    # case d0Q[1]=0 we can choose y arbitrary (1 in this case) and  x=0
-    elif(d0Q[1]==0):
-        d1=[0,1]
-
-    #case d0Q components are both not 0 , can be demonstrated by simple algebric steps that
-    #d1[0]=(-d0Q[1]d1[1])/d0Q[0], so we choose d1[1] arbitrary 1 in this case and d1[0]=-d0Q[1]/d0Q[0]
-    else:
-        d1[1]=1
-        d1[0]=(-d0Q[1]*d1[1])/d0Q[0]
-    return d1
-
-#2) we now have all the data needed to start the algorithm and can procede with the iteration
+#we now have all the data needed to start the algorithm and can procede with the iteration
 
 k=0
 #d0 as dk , d1 as dk+1
 while (k<=10**4):
     g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
     d0Q=numpy.dot(d0,Q) #matrix multiplication between d0^t and Q
-    print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x,"direction",calculateDirectionMethodD1(d0Q))
-    if (numpy.linalg.norm(g0)==0):#algorithm found the only critical point and must be global in the strictly convex function
-                                   #you might want to set an arbitraty tolerance eps>0 s.t. norm(g0)<=eps since there can be cases where
-                                   # norm(g0) will never converge to 0
+    print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x)
+    if (numpy.linalg.norm(g0)==0): #algorithm found the only critical point and must be global in the strictly convex function
         print("global minimum at",x,"after",k,"iterations")
         break
     alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculate alfak step to take from point xk
