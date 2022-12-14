@@ -28,10 +28,10 @@ g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
 #h0=[[10,-2],[-2,6]]
 
 #we will need to express the function in a quadratic form 1/2*x^tQx+c^tx
-#so we declare 2 arrays composed by c (2x1) and Q coefficients (2x2)
+#so we declare 2 arrays composed by c (2x1) and Q coefficients (2x2) , Q corresponds to Hessian matrix in the quadratic form
 
 c=[-2,5]
-Q=[[10,-4],[0,6]]
+Q=[[10,-2],[-2,6]]
 
 #d0 taken as arbitrary initial direction,in this case using the antigradient
 
