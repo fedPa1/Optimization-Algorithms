@@ -20,7 +20,6 @@ def simpleAlphaStep(f,g,x,d):
         if (fAlfa<=f):
             print("after",j,"iterations found",alfa)
             return alfa
-            break
         alfa*=0.5
         j+=1
     return
