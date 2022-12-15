@@ -2,8 +2,6 @@
 # Contact: fedpa35@gmail.com
 
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
-#using a variation created by me of conjugated directions method, the algorithm seems to be working even with non symmetric Q nxn , however it's not broadly tested
-#or demonstrated and it was purely done for fun.
 
 #Notation:
 #^t indicates the transposed operator in arrays
@@ -62,8 +60,7 @@ def calculateDirectionMethodD1(d0Q):
 #2) we now have all the data needed to start the algorithm and can procede with the iteration
 
 k=0
-while (k<=10**4): #the difference between this and the original method is that we don't know a priori how many iterations the algorithm will need, however in this test
-                  # they are still low
+while (k<=10**4):
 
     g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
     print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x,"direction",calculateDirectionMethodD1(numpy.dot(d0,Q)))
