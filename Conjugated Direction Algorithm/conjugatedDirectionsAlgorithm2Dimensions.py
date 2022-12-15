@@ -1,8 +1,7 @@
 # @Author: Federico Pantini
 # Contact: fedpa35@gmail.com
 
-#The script is an algorithm that works in 2 variables quadratic functions to find the global minimum, i made a modification to the original method putting an iterative
-# calculation of the conjugated direction , if Q is symmetric the original method is working as usual , if not the global minimum will still be found after some j steps
+#The script is an algorithm that works in 2 variables quadratic functions to find the global minimum using the conjugated direction method
 
 #Notation:
 #^t indicates the transposed operator in arrays
@@ -72,13 +71,11 @@ while (k<=10**4):
         break 
     d0Q=numpy.dot(d0,Q)  
     
-    alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculate alfak step to take from point xk, we use the same alfak in the original conjugated direction method
+    alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculates alfak step to take from point xk, we use the same alfak in the original conjugated direction method
     
-    x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]]  
+    x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]]  #calculates xk+1
                                            
-    d0=calculateDirectionMethodD1(d0Q) #calculate next conjugate direction iteratively unlike the original method where you need a conjugated direction initial basis in R^n
-                                        # if the Q matrix is symmetric it will work as usual in 2 or less steps (in 2 dimensions), if not it will generate
-                                        # new directions that are Q-conjugated  just with the previous one and and still find a global minimum after some steps
+    d0=calculateDirectionMethodD1(d0Q) #calculates next conjugate direction
     k+=1
 
 
