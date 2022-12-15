@@ -19,8 +19,6 @@ d0=[-g0[0],-g0[1]]
 
 
 def armijo(f,x,d,g0): 
-        print(x,d,numpy.dot(g0,d),numpy.linalg.norm(g0)**2)
-        print(1.e-3*numpy.linalg.norm(g0))
         if(numpy.dot(g0,d)>=0):
             print("initial direction not descent, please choose a valid direction")
             return
