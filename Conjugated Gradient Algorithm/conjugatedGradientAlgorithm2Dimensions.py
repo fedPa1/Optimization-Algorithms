@@ -41,7 +41,9 @@ while (k<=10**4):
     g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
     d0Q=numpy.dot(d0,Q) 
     print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x)
-    if (numpy.linalg.norm(g0)==0): #algorithm found the only critical point and must be global in the strictly convex function
+    if (numpy.linalg.norm(g0)<=1.e-7): #algorithm found the only critical point and must be global in the strictly convex function
+                                   #you might want to set an arbitrary tolerance eps>0 s.t. norm(g0)<=eps since there can be cases where
+                                   # norm(g0) will never converge to 0
         print("global minimum at",x,"after",k,"iterations")
         break
     alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculates alfak step to take from point xk
