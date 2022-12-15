@@ -2,28 +2,24 @@
 # Contact: fedpa35@gmail.com
 
 #The script is an algorithm that works in 2 variables quadratic functions to find the global minimum
-#using a variation created by me of conjugated directions method, the algorithm seems to be working , however it's not broadly tested
-#or demonstrated and it was purely done for fun, the difference is that we can calculate a direction d1 given as initial direction the antigradient
-#iteratively avoiding to initially set a Basis in R^n of Q-conjugated directions.
-
-#References: https://www.stat.cmu.edu/~ryantibs/convexopt-F13/scribes/lec10.pdf
+#using a variation created by me of conjugated directions method, the algorithm seems to be working even with non symmetric Q nxn , however it's not broadly tested
+#or demonstrated and it was purely done for fun.
 
 #Notation:
 #^t indicates the transposed operator in arrays
 #* indicates multiplication sign except in x* indicating a point in R^2
-#sum|i=c1-->c2 of f(i) indicates summation from c1 to c2 in the input function f(i)
+
 
 import numpy
 import math
 import random
-import numdifftools as nd
 
 #initial random point x in R^2 
 
 x=[random.random()*1000,random.random()*1000]
 
 #function (f0 function,g0 gradient,h0 hessian matrix) f0 must match 1/2*x^tQx+c^tx form
-#we can input any function as long it matches the required form with Q nxn with determinant defined positive
+#we can input any function as long it matches the required form with Q simmetric nxn with determinant defined positive
 
 f0=5*x[0]**2-2*x[0]+5*x[1]+3*x[1]**2-2*x[0]*x[1] 
 g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
@@ -31,18 +27,16 @@ g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
 
 #we will need to express the function in a quadratic form 1/2*x^tQx+c^tx
 #so we declare 2 arrays composed by c (2x1) and Q coefficients (2x2) , Q corresponds to Hessian matrix in the quadratic form
-
 c=[-2,5]
 Q=[[10,-2],[-2,6]]
 
 #d0 taken as arbitrary initial direction,in this case using the antigradient
-
 d0=[-g0[0],-g0[1]]
 
 #at this point we know that an x* critical point exists in R^2 and it's the only point of minimum 
 #since Q determinant is defined positive in the quadratic form (function is strictly convex)
 
-#1) calculate dk+1 direction given dk and Q (already multiplied)
+#1) calculate dk+1 conjugated direction given dk and Q (premultiplied)
 
 def calculateDirectionMethodD1(d0Q):
     d1=[0,0]
@@ -68,19 +62,23 @@ def calculateDirectionMethodD1(d0Q):
 #2) we now have all the data needed to start the algorithm and can procede with the iteration
 
 k=0
-while (k<=10**4):
+while (k<=10**4): #the difference between this and the original method is that we don't know a priori how many iterations the algorithm will need, however in this test
+                  # they are still low
+
     g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
-    d0Q=numpy.dot(d0,Q) #matrix multiplication between d0^t and Q
-    print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x,"direction",calculateDirectionMethodD1(d0Q))
+    print("k=",k,"Gradient",numpy.linalg.norm(g0),"point",x,"direction",calculateDirectionMethodD1(numpy.dot(d0,Q)))
     if (numpy.linalg.norm(g0)==0): #algorithm found the only critical point and must be global in the strictly convex function
-                                   #you might want to set an arbitraty tolerance eps>0 s.t. norm(g0)<=eps since there can be cases where
+                                   #you might want to set an arbitrary tolerance eps>0 s.t. norm(g0)<=eps since there can be cases where
                                    # norm(g0) will never converge to 0
         print("global minimum at",x,"after",k,"iterations")
-        break
-    alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculate alfak step to take from point xk
-    x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]]
-    d0=calculateDirectionMethodD1(d0Q) #calculate d1 based on d0 , difference between this variation and original method is that we can calculate the directions 
-                                        #iteratively instead of giving a set of n Q-conjugated directions B before the algorithm start
+        break 
+    d0Q=numpy.dot(d0,Q)  
+    
+    alfak=-numpy.dot(g0,d0)/numpy.dot(d0Q,d0) #calculate alfak step to take from point xk, we use the same alfak in the original conjugated direction method
+    
+    x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]]  
+                                           
+    d0=calculateDirectionMethodD1(d0Q) #calculate next conjugate direction iteratively unlike the original method where you need a conjugated direction initial basis in R^n
     k+=1
 
 
