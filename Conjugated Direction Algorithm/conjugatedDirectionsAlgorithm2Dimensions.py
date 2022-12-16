@@ -75,9 +75,9 @@ while (k<=10**4):
     
     x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]]  #calculates xk+1
                                            
-    d0=calculateDirectionMethodD1(d0Q) #calculates next conjugate direction, this works because we are in R^2 and we just need 2 conjugated directions and can use this iteratively,
-                                       #however, for n>2 we must compare each new direction with each already existing direction and this might not work iteratively unless
-                                       # we define a new "calculate new d1 direction" that does the job for the dimension we need
+    d0=calculateDirectionMethodD1(d0Q) #calculates next conjugate direction just comparing the previous one, this works because we are in R^2 and we just need 2 conjugated directions,
+                                       #however, for n>2 we must compare each new direction with each already existing direction and this might not work unless
+                                       # we define a new "calculate new dk+1 direction" that does the job for the dimension we need
     k+=1
 
 
