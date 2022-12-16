@@ -10,11 +10,7 @@ import math
 import random
 
 def armijo(f,x,d,g): 
-        f0=f
-        x0=x
-        g0=g
-        d0=d
-        if(numpy.dot(g0,d0)>=0):
+        if(numpy.dot(g,d)>=0):
             print("initial direction not descent, please choose a valid direction")
             return
         alpha=1 #alfa0 step >0
@@ -22,8 +18,8 @@ def armijo(f,x,d,g):
         gamma=0.5 # 0<gamma<=0.5
         j=0
         while(j<=10**4):
-            #fAlpha=  your f(x+alpha*d) function
-            if (fAlpha<=f0+gamma*alpha*numpy.dot(g0,d0)):
+            fAlpha=  #your f(x+alpha*d) function
+            if (fAlpha<=f+gamma*alpha*numpy.dot(g,d)):
                 print("after",j,"iterations found","alpha=",alpha)
                 return alpha
                 break
