@@ -77,7 +77,8 @@ while (k<=10**4):
                                            
     d0=calculateDirectionMethodD1(d0Q) #calculates next conjugate direction just comparing the previous one, this works because we are in R^2 and we just need 2 conjugated directions,
                                        #however, for n>2 we must compare each new direction with each already existing direction and this might not work unless
-                                       # we define a new "calculate new dk+1 direction" that does the job for the dimension we need
+                                       # we define a new "calculate new dk+1 direction" that does the job for the dimension we need, or create a B basis of Q-conj directions in R^n
+                                       # outside the loop and use for each k iteration the k direction in B
     k+=1
 
 
