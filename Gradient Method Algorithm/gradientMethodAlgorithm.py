@@ -29,3 +29,4 @@ while (k<=10**4):
     alfak=armijoRule.armijo(f0, x, d0, g0) #we use armijo to calculate the alphak step
     x=[x[0]+alfak*d0[0],x[1]+alfak*d0[1]] #new xk+1 point
     k+=1
+
