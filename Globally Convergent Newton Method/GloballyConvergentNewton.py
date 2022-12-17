@@ -37,7 +37,7 @@ while k<=10**7:
          # to calculate next direction, low c1 => more iterations with Newton method
          #you can play around yourself with c1,c2 constants to see different results
 
-    if (abs(DetQ)>c1): #DetQ must be !=0 
+    if (abs(DetQ)>c1*numpy.linalg.norm(g0)**2): #DetQ must be !=0 
 
         sk=[-numpy.dot(numpy.linalg.inv(Q),g0)[0],-numpy.dot(numpy.linalg.inv(Q),g0)[1]]
 
@@ -46,7 +46,7 @@ while k<=10**7:
              # that it will need less iterations, it is used primarily to avoid potential too weak directions calculated
              #in the next alphak step
 
-        if(numpy.dot(g0,sk)<=-c2):
+        if(numpy.dot(g0,sk)<=-c2*numpy.linalg.norm(g0)**2):
             print("Newthon method used")
             d0=[sk[0],sk[1]]
             x=[x[0]+d0[0],x[1]+d0[1]] #its x+d0 because we already put a minus in sk (xk+1=xk-g0/Q)
