@@ -12,7 +12,7 @@ import armijoRule
 
 x=[random.random()*1000,random.random()*1000]
 
-#function (f0 function,g0 gradient,h0 hessian matrix), we can input any 2 variables function
+#function (f0 function,g0 gradient,Q hessian matrix), we can input any 2 variables function
 
 f0=5*x[0]**2-2*x[0]+5*x[1]+3*x[1]**2-2*x[0]*x[1] 
 g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]  #your input function,Q,g0,d0
