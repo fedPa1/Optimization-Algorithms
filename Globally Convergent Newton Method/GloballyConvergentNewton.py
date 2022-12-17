@@ -1,7 +1,4 @@
-# @Author: Federico Pantini 
-# email:fedpa35@gmail.com
-
-# The script computes the global minimum point of a 2 variable function (that admits a global minimum) using a modification of the Newton Method
+#the script computes the global minimum point of a 2 variable function (that admits a global minimum) using a modification of the Newton Method
 
 
 import numpy
