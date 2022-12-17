@@ -30,7 +30,7 @@ while(k<=10**5 and delta>=1.e-20):
     best=f0
     index=0
     for i in range(len(options)):
-        if(options[i]<f0):
+        if(options[i]<best):
             best=options[i]
             index=i
     if(best<f0):
