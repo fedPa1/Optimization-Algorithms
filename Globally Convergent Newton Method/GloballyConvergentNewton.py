@@ -33,20 +33,20 @@ while k<=10**7:
         break
     DetQ=Q[0][0]*Q[1][1]-Q[0][1]*Q[1][0]
 
-    c1=0.000001 #arbitrary constant >0 we set the degree of tolerance choosing Newton method over the antigradient
+    c1=1.e-7 #arbitrary constant >0 we set the degree of tolerance choosing Newton method over the antigradient
          # to calculate next direction, low c1 => more iterations with Newton method
          #you can play around yourself with c1,c2 constants to see different results
 
-    if (abs(DetQ)>c1*numpy.linalg.norm(g0)**2): #DetQ must be !=0 
+    if (abs(DetQ)>c1): #DetQ must be !=0 
 
         sk=[-numpy.dot(numpy.linalg.inv(Q),g0)[0],-numpy.dot(numpy.linalg.inv(Q),g0)[1]]
 
-        c2=0.00000001 #arbitrary constant >0 , this sets how much the direction should be descending ,
+        c2=1.e-7 #arbitrary constant >0 , this sets how much the direction should be descending ,
              # low c2 => more tolerance towards less descending direction, however a low tolerance doesn't mean
              # that it will need less iterations, it is used primarily to avoid potential too weak directions calculated
              #in the next alphak step
 
-        if(numpy.dot(g0,sk)<=-c2*numpy.linalg.norm(g0)**2):
+        if(numpy.dot(g0,sk)<=-c2):
             print("Newthon method used")
             d0=[sk[0],sk[1]]
             x=[x[0]+d0[0],x[1]+d0[1]] #its x+d0 because we already put a minus in sk (xk+1=xk-g0/Q)
