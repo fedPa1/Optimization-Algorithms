@@ -43,6 +43,8 @@ while k<=10**5:
              #in the next alphak step
 
         c3=1  #arbitrary constant >0 , this grants that direction sk is making the gradient converge to 0 for k->inf
+        
+            #using these constants shares the same purpose as Wolfe's conditions, more info here: https://en.wikipedia.org/wiki/Wolfe_conditions
 
         if(numpy.dot(g0,sk)<=-c2*numpy.linalg.norm(g0)**3 and numpy.linalg.norm(sk)**2<=c3*numpy.linalg.norm(g0)):
             print("Newthon direction used")
