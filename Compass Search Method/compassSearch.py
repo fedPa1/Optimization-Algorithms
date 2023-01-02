@@ -20,7 +20,7 @@ k=0
 while(k<=10**5 and delta>=1.e-20):
     f0=5*x[0]**2-2*x[0]+5*x[1]+3*x[1]**2-2*x[0]*x[1] 
     g0=[10*x[0]-2*x[1]-2,6*x[1]-2*x[0]+5]
-    if(numpy.linalg.norm(g0)<=1.e-7):
+    if(numpy.linalg.norm(g0)<=1.e-7): #theoretically compass search doesn't include a stopping criterion based on gradient but a minimum delta step tolerance criterion
         print("global minimum at",x,"after",k,"iterations")
         break
     options=[]
@@ -39,3 +39,6 @@ while(k<=10**5 and delta>=1.e-20):
     else:
         delta/=2
     k+=1
+if(numpy.linalg.norm(g0)>1.e-7):
+    print("lowest value found at",x,"after",k,"iterations")
+    break
